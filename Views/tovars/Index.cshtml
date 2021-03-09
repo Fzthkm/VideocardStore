@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Магазин.Models.tovar>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-white">Список товаров</h1>
+
+<table class="table bg-white" style="width:90%; margin: 0 auto;">
+    <thead>
+        <tr>
+            <th>
+                Изображение
+            </th>
+            <th>
+                Название
+            </th>
+            <th>
+                Стоимость
+            </th>
+            <th>
+                Количество товара на складе
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <img src="~/img/tovar/@Html.DisplayFor(modelItem => item.Image)" style="width:200px; height: 140px;"/>
+            </td>
+            <td>
+                <a asp-controller="tovars" asp-action="Details">@Html.DisplayFor(modelItem => item.name)</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stoimost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.kolichestvoNaSklade)
+            </td>
+            <td>
+                <a class="btn-outline-dark text-decoration-none " asp-action="Create" asp-controller="zakaz" asp-route-id="@item.Id">Сделать заказ</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

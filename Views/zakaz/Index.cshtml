@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Магазин.Models.zakaz>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-white">Список заказов</h1>
+
+<table class="table bg-white" style="width:90%; margin: 0 auto;">
+    <thead>
+        <tr>
+            <th>
+                Название
+            </th>
+            <th>
+                Количество
+            </th>
+            <th>
+                Способ доставки
+            </th>
+            <th>
+                Имя получателя
+            </th>
+            <th>
+                Адрес
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tovar.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.kolichestvo)
+                </td>
+                @if (item.sposobDostavki == tip.dostavka)
+                {
+                    <td>
+                        Доставка
+                    </td>
+}
+                else
+                {
+                    <td>
+                        Самовывоз
+                    </td>
+
+                }
+                <td>
+                    @Html.DisplayFor(modelItem => item.poluchatel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.adres)
+                </td>
+                @*<td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>*@
+            </tr>
+        }
+    </tbody>
+</table>

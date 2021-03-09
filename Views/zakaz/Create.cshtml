@@ -1,0 +1,48 @@
+﻿@model Магазин.Models.zakaz
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4 class="text-light" style="font-size:2em;">Заказ</h4>
+<div class="row justify-content-center bg-white">
+    <div style="padding-top:35px;">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                <label asp-for="adres" class="control-label text-dark">Адрес доставки</label><br />
+                <input type="text" asp-for="adres" style="width:400px;" />
+            </div>
+            <div>
+                <label asp-for="poluchatel" class="control-label text-dark">ФИО получателя</label><br />
+                <input type="text" asp-for="poluchatel" style="width:400px;" />
+            </div>
+            <div class="form-group">
+                <label asp-for="kolichestvo" class="control-label text-dark">Количество</label>
+                <input type="number" asp-for="kolichestvo" class="form-control" style="width:400px;" />
+                <span asp-validation-for="kolichestvo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="karta" class="control-label text-dark">Номер карты</label><br />
+                <input type="text" asp-for="karta" style="width:400px;" />
+            </div>
+            <div class="form-group">
+                <label asp-for="sposobDostavki" class="control-label text-dark">Способ доставки</label>
+                <select asp-for="sposobDostavki" class="form-control" style="width:400px;">
+                    <option disabled>Выберите способ доставки</option>
+                    <option value="1">Доставка</option>
+                    <option selected value="2">Самовывоз</option>
+                </select>
+                <span asp-validation-for="sposobDostavki" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Оформить заказ" class="btn btn-dark" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
